@@ -5,7 +5,7 @@ import { cva } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
 const buttonVariants = cva(
-    'inline-flex items-center justify-center rounded-lg text-sm font-medium transition-colors disabled:opacity-50 disabled:pointer-events-none',
+    'inline-flex text-base items-center justify-center rounded-lg font-medium transition-colors disabled:opacity-50 disabled:pointer-events-none',
     {
         variants: {
             variant: {
@@ -13,9 +13,9 @@ const buttonVariants = cva(
                 secondary: 'bg-gray-100 text-white',
             },
             size: {
-                default: 'h-14 px-6',
-                sm: 'h-9 px-3 rounded-md',
-                lg: 'h-18 px-8',
+                default: 'h-15 px-5',
+                sm: 'h-14 px-4 rounded-md',
+                lg: 'h-16 px-6',
             },
         },
         defaultVariants: {

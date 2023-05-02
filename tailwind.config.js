@@ -33,6 +33,9 @@ module.exports = {
             },
         },
         extend: {
+            spacing: {
+                15: '3.75rem',
+            },
             maxWidth: {
                 '1/4': '25%',
                 '1/3': '33.3%',
