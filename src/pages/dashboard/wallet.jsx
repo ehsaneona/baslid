@@ -1,7 +1,7 @@
 import React from 'react';
 
 function WalletPage() {
-    return <div></div>;
+    return <div />;
 }
 
 export async function getServerSideProps() {

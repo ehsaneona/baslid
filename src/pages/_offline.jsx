@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Offline = () => {
+function Offline() {
     return <div>No internet connection</div>;
-};
+}
 
 export default Offline;

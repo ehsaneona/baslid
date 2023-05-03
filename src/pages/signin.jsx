@@ -1,9 +1,9 @@
 import React from 'react';
-import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import Head from 'next/head';
+import { Button } from '@/components/ui/button';
 import AuthLayout from '@/components/authLayout';
 import { Input } from '@/components/ui/input';
-import Head from 'next/head';
 
 function SignInPage() {
     return (
@@ -36,6 +36,7 @@ function SignInPage() {
                     </Button>
                 </div>
                 <div className="text-gray-500 mt-5">
+                    {/* eslint-disable-next-line react/no-unescaped-entities */}
                     I don't have an account?{' '}
                     <Link href="/signup">
                         <span className="text-white cursor-pointer">

@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Head from 'next/head';
 import { Button } from '@/components/ui/button';
 import AuthLayout from '@/components/authLayout';
 import { Input } from '@/components/ui/input';
@@ -11,9 +12,6 @@ import {
     SelectTrigger,
     SelectValue,
 } from '@/components/ui/select';
-import Head from 'next/head';
-import { Skeleton } from '@/components/ui/skeleton';
-import { Spinner } from '@/components/ui/spinner';
 
 function RegisterPage() {
     return (
