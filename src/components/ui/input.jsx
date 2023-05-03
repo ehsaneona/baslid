@@ -9,7 +9,7 @@ const Input = React.forwardRef(({ className, type, ...props }, ref) => {
             <input
                 type={showPassword ? 'text' : type}
                 className={cn(
-                    'flex h-15 font-medium rounded-lg bg-black-700 px-5 py-2 text-base ring-offset-background placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white disabled:cursor-not-allowed disabled:opacity-50',
+                    'flex h-15 font-medium rounded-lg bg-black-700 px-5 py-2 text-base ring-offset-background placeholder:text-gray-400 focus-visible:outline-none focus-visible:bg-black-800 focus-visible:ring-1 focus-visible:ring-white disabled:cursor-not-allowed disabled:opacity-50',
                     className
                 )}
                 ref={ref}
