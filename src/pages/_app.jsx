@@ -14,7 +14,7 @@ router.events.on('routeChangeError', () => NProgress.done());
 
 // eslint-disable-next-line react/prop-types
 function MainApp({ Component, pageProps, err }) {
-    // const siteLayout = Component.layout || getDefaultLayout;
+    const getLayout = Component.getLayout || (page => page);
 
     return (
         <>
@@ -38,10 +38,8 @@ function MainApp({ Component, pageProps, err }) {
                 rtl
             />
             <AppContext>
-                {/* {siteLayout(<Component {...pageProps} err={err} />)} */}
                 <div className="bg-black-900 h-screen">
-                    {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-                    <Component {...pageProps} err={err} />
+                    {getLayout(<Component {...pageProps} err={err} />)}
                 </div>
             </AppContext>
         </>
