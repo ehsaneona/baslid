@@ -2,7 +2,7 @@ import React from 'react';
 
 function AuthLayout({ children }) {
     return (
-        <div className="h-full flex no-gap text-white">
+        <div className="flex text-white h-screen">
             <div className="bg-black-800 w-full h-full flex flex-col !justify-center !items-center text-center">
                 <div className="max-w-1/2">{children}</div>
             </div>
