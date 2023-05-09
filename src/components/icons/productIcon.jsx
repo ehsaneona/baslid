@@ -50,8 +50,8 @@ function HomeIcon({ isActive, className }) {
             <defs>
                 <clipPath id="clip0_256_3524">
                     <rect
-                        width="20"
-                        height="20"
+                        width={20}
+                        height={20}
                         fill="white"
                         transform="translate(0 0.722656)"
                     />

@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
 import { cx } from 'class-variance-authority';
+import { Spinner } from '@/components/ui/spinner';
 
-const Table = ({ headers, values }) => {
+function Table({ headers, values, isLoading }) {
     const [sortColumn, setSortColumn] = useState(headers[0].key);
     const [sortOrder, setSortOrder] = useState('asc');
 
@@ -16,8 +17,7 @@ const Table = ({ headers, values }) => {
             setSortOrder('asc');
         }
     };
-
-    const sortedValues = values.slice().sort((a, b) => {
+    const sortedValues = values?.slice().sort((a, b) => {
         if (sortOrder === 'asc') {
             // eslint-disable-next-line no-nested-ternary
             return a[sortColumn] < b[sortColumn]
@@ -40,13 +40,14 @@ const Table = ({ headers, values }) => {
 
     return (
         <div className="overflow-x-auto bg-black-800 p-2.5">
-            <table className="table-auto w-full rounded-lg shadow-lg">
+            <table className="table-auto w-full rounded-lg">
                 <thead>
                     <tr className="bg-transparent border-b-2 border-b-gray-50">
                         {headers.map(header => (
                             <th
                                 key={header.key}
                                 className="px-6 py-4 text-left font-semibold text-xs text-gray-700">
+                                {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
                                 <div
                                     className={cx(
                                         'flex items-center cursor-pointer select-none',
@@ -70,28 +71,49 @@ const Table = ({ headers, values }) => {
                     </tr>
                 </thead>
                 <tbody className="bg-transparent">
-                    {sortedValues.map(row => (
-                        <tr
-                            key={row.id}
-                            className="hover:bg-gray-200 border-b border-b-gray-50 last:border-0">
-                            {headers.map(header => (
-                                <td
-                                    key={header.key}
-                                    className={cx(
-                                        'px-4 py-2 text-gray-700 font-semibold first:rounded-l-lg last:rounded-r-lg',
-                                        {
-                                            'text-center': !header.left,
-                                        }
-                                    )}>
-                                    {row[header.key]}
-                                </td>
-                            ))}
+                    {isLoading ? (
+                        <tr>
+                            <td colSpan={10}>
+                                <Spinner
+                                    color="white"
+                                    width={40}
+                                    height={40}
+                                    className="mt-4 mb-2"
+                                />
+                            </td>
                         </tr>
-                    ))}
+                    ) : sortedValues ? (
+                        <tr>
+                            <td colSpan={10}>
+                                <div className="flex items-center justify-center mt-4 mb-3 font-semibold text-base">
+                                    No product!
+                                </div>
+                            </td>
+                        </tr>
+                    ) : (
+                        sortedValues?.map(row => (
+                            <tr
+                                key={row.id}
+                                className="hover:bg-gray-200 border-b border-b-gray-50 last:border-0">
+                                {headers.map(header => (
+                                    <td
+                                        key={header.key}
+                                        className={cx(
+                                            'px-4 py-2 text-gray-700 font-semibold first:rounded-l-lg last:rounded-r-lg',
+                                            {
+                                                'text-center': !header.left,
+                                            }
+                                        )}>
+                                        {row[header.key]}
+                                    </td>
+                                ))}
+                            </tr>
+                        ))
+                    )}
                 </tbody>
             </table>
         </div>
     );
-};
+}
 
 export default Table;

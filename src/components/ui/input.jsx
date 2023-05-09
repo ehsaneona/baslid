@@ -1,16 +1,17 @@
 import * as React from 'react';
+import { cx } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
-const Input = React.forwardRef(({ className, type, ...props }, ref) => {
+const Input = React.forwardRef(({ className, isSlim, type, ...props }, ref) => {
     const [showPassword, setShowPassword] = React.useState(false);
 
     return (
-        <div className="relative">
+        <div className={cx('relative', className)}>
             <input
                 type={showPassword ? 'text' : type}
                 className={cn(
-                    'flex h-15 font-medium rounded-lg bg-black-700 px-5 py-2 text-base ring-offset-background placeholder:text-gray-400 focus-visible:outline-none focus-visible:bg-black-800 focus-visible:ring-1 focus-visible:ring-white disabled:cursor-not-allowed disabled:opacity-50',
-                    className
+                    'flex font-medium rounded-lg bg-black-700 px-5 py-2 text-base ring-offset-background placeholder:text-gray-400 focus-visible:outline-none focus-visible:bg-black-800 focus-visible:ring-1 focus-visible:ring-white disabled:cursor-not-allowed disabled:opacity-50 w-full',
+                    isSlim ? 'h-14' : 'h-15'
                 )}
                 ref={ref}
                 {...props}

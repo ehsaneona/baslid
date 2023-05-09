@@ -1,12 +1,12 @@
 import { cn } from '@/lib/utils';
 
-function Spinner({ className, color, ...props }) {
+function Spinner({ className, color, width = 25, height = 25, ...props }) {
     return (
         <div className={cn('flex items-center justify-center')} {...props}>
             <svg
                 className={cn('animate-spin mr-3', className)}
-                width="24"
-                height="24"
+                width={width}
+                height={height}
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg">

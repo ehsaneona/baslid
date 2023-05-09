@@ -18,5 +18,12 @@ module.exports = {
         'react/button-has-type': 0,
         'import/prefer-default-export': 0,
         'react/react-in-jsx-scope': 0,
+        'react/no-unstable-nested-components': 0,
+        'no-underscore-dangle': 0,
+        'import/no-cycle': 0,
+        'no-param-reassign': 0,
+        'no-restricted-globals': 0,
+        'no-use-before-define': 0,
+        'react/no-unescaped-entities': 0,
     },
 };

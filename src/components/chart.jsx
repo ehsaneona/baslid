@@ -4,15 +4,23 @@ import { ResponsiveBar } from '@nivo/bar';
 function Chart({ data }) {
     return (
         <ResponsiveBar
+            onMouseEnter={(_data, event) => {
+                // eslint-disable-next-line no-param-reassign
+                event.target.style.fill = '#F8CE52';
+            }}
+            onMouseLeave={(_data, event) => {
+                // eslint-disable-next-line no-param-reassign
+                event.target.style.fill = '#FFF7D3';
+            }}
             data={data}
-            keys={['hot dog']}
-            indexBy="country"
-            margin={{ top: 50, right: 50, bottom: 50, left: 50 }}
+            keys={['earn']}
+            indexBy="date"
+            margin={{ top: 5, right: 0, bottom: 25, left: 45 }}
             padding={0.8}
             groupMode="grouped"
             valueScale={{ type: 'linear' }}
             indexScale={{ type: 'band', round: true }}
-            colors={{ scheme: 'yellow_orange_brown' }}
+            colors={['#FFF7D3']}
             borderRadius={4}
             borderColor={{
                 from: 'color',
@@ -45,100 +53,40 @@ function Chart({ data }) {
             }}
             legends={[]}
             role="application"
-            barAriaLabel={e =>
-                e.id + ': ' + e.formattedValue + ' in country: ' + e.indexValue
-            }
+            tooltip={d => (
+                <div className="text-xs font-medium space-x-2.5 flex items-center">
+                    <span className="inline-flex h-3.5 w-1 bg-black-900 rounded-[1px]" />
+                    <span>${d.data.earn} Earnings</span>
+                </div>
+            )}
             theme={{
                 fontSize: 14,
                 axis: {
-                    domain: {
-                        line: {
-                            stroke: '#777777',
-                            strokeWidth: 1,
-                        },
-                    },
-                    legend: {
-                        text: {
-                            fontSize: 12,
-                            fill: 'white',
-                        },
-                    },
                     ticks: {
-                        line: {
-                            stroke: '#777777',
-                            strokeWidth: 1,
-                        },
                         text: {
-                            fontSize: 11,
-                            fill: 'white',
+                            fontSize: 14,
+                            fontWeight: 500,
+                            fill: 'rgba(255, 255, 255, 0.4)',
                         },
                     },
                 },
                 grid: {
                     line: {
-                        stroke: '#F1F1F1',
+                        stroke: 'rgba(241, 241, 241, 0.1)',
                         strokeWidth: 1,
-                    },
-                },
-                legends: {
-                    title: {
-                        text: {
-                            fontSize: 11,
-                            fill: '#333333',
-                        },
-                    },
-                    text: {
-                        fontSize: 11,
-                        fill: '#333333',
-                    },
-                    ticks: {
-                        line: {},
-                        text: {
-                            fontSize: 10,
-                            fill: '#333333',
-                        },
-                    },
-                },
-                annotations: {
-                    text: {
-                        fontSize: 13,
-                        fill: '#333333',
-                        outlineWidth: 2,
-                        outlineColor: '#ffffff',
-                        outlineOpacity: 1,
-                    },
-                    link: {
-                        stroke: '#000000',
-                        strokeWidth: 1,
-                        outlineWidth: 2,
-                        outlineColor: '#ffffff',
-                        outlineOpacity: 1,
-                    },
-                    outline: {
-                        stroke: '#000000',
-                        strokeWidth: 2,
-                        outlineWidth: 2,
-                        outlineColor: '#ffffff',
-                        outlineOpacity: 1,
-                    },
-                    symbol: {
-                        fill: '#000000',
-                        outlineWidth: 2,
-                        outlineColor: '#ffffff',
-                        outlineOpacity: 1,
                     },
                 },
                 tooltip: {
                     container: {
                         background: '#ffffff',
                         color: '#000',
-                        fontSize: 12,
+                        borderRadius: 9,
+                        boxShadow: 'none',
+                        height: 40,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
                     },
-                    basic: {},
-                    chip: {},
-                    table: {},
-                    tableCell: {},
-                    tableCellValue: {},
                 },
             }}
         />

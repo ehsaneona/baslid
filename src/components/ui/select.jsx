@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import * as SelectPrimitive from '@radix-ui/react-select';
-import { Check } from 'lucide-react';
+import { Check, ChevronDown } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 
@@ -13,43 +13,25 @@ const SelectGroup = SelectPrimitive.Group;
 const SelectValue = SelectPrimitive.Value;
 
 const SelectTrigger = React.forwardRef(
-    ({ className, children, ...props }, ref) => (
+    ({ className, children, isSlim, isMedium, outline, ...props }, ref) => (
         <SelectPrimitive.Trigger
             ref={ref}
             className={cn(
-                'flex h-15 w-full items-center justify-between rounded-lg bg-black-700 font-medium px-5 py-2 text-base ring-offset-background focus-visible:outline-none focus-visible:bg-black-800 focus-visible:ring-1 focus-visible:ring-white disabled:cursor-not-allowed disabled:opacity-50 data-[placeholder]:text-gray-400',
+                'flex items-center justify-between rounded-lg font-medium px-5 py-2 text-base ring-offset-background focus-visible:outline-none focus-visible:bg-black-800 focus-visible:ring-1 focus-visible:ring-white disabled:cursor-not-allowed disabled:opacity-50 data-[placeholder]:text-gray-400',
+                isSlim ? 'h-12' : isMedium ? 'h-14' : 'h-15',
+                outline
+                    ? 'bg-transparent border-[1.5px] border-gray-50'
+                    : 'bg-black-700',
                 className
             )}
             {...props}>
             {children}
             <SelectPrimitive.Icon asChild>
-                <svg
-                    className="h-6 w-6"
-                    width="24"
-                    height="25"
-                    viewBox="0 0 24 25"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <g opacity="0.4" clipPath="url(#clip0_154_1863)">
-                        <path
-                            d="M18.5 10.5L12 17L5.5 10.5"
-                            stroke="white"
-                            strokeWidth="1.5"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        />
-                    </g>
-                    <defs>
-                        <clipPath id="clip0_154_1863">
-                            <rect
-                                width="24"
-                                height="24"
-                                fill="white"
-                                transform="translate(0 0.5)"
-                            />
-                        </clipPath>
-                    </defs>
-                </svg>
+                <ChevronDown
+                    className="w-6 h-6 ml-3"
+                    color="white"
+                    opacity="0.4"
+                />
             </SelectPrimitive.Icon>
         </SelectPrimitive.Trigger>
     )

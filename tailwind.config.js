@@ -26,8 +26,15 @@ module.exports = {
                 700: 'rgba(255, 255, 255, 0.7)',
             },
             blue: {},
-            red: {},
+            red: {
+                900: '#ff1e46',
+            },
             orange: {},
+            yellow: {
+                200: '#A8920A',
+                400: '#F5DD00',
+                500: '#FFCD28',
+            },
             white: '#fff',
             black: {
                 700: '#131315',
@@ -60,6 +67,21 @@ module.exports = {
                 '8/10': '80%',
                 '9/10': '90%',
             },
+            keyframes: {
+                'accordion-down': {
+                    from: { height: 0 },
+                    to: { height: 'var(--radix-accordion-content-height)' },
+                },
+                'accordion-up': {
+                    from: { height: 'var(--radix-accordion-content-height)' },
+                    to: { height: 0 },
+                },
+            },
+            animation: {
+                'accordion-down': 'accordion-down 0.2s ease-out',
+                'accordion-up': 'accordion-up 0.2s ease-out',
+            },
         },
     },
+    plugins: [require('tailwindcss-animate')],
 };

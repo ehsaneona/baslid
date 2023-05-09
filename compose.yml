@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: baslid_frontend_production
+    container_name: baslid_frontend_production
+    env_file:
+      - .env
+    ports:
+      - "3010:3000"
+    restart: always
+    command: yarn start

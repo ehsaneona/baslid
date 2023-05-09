@@ -9,5 +9,17 @@ const nextConfig = {
             envPath: '.env',
         },
     }).parsed,
+    async rewrites() {
+        return [
+            {
+                source: '/api/:path*',
+                destination: 'http://5.34.202.90:8080/api/:path*',
+            },
+            {
+                source: '/storage/:path*',
+                destination: 'http://5.34.202.90:8080/storage/:path*',
+            },
+        ];
+    },
 };
 module.exports = nextConfig;

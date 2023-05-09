@@ -6,7 +6,6 @@ import { ToastContainer } from 'react-toastify';
 // eslint-disable-next-line import/no-unresolved
 import '@/static/global.css';
 import AppContext from '../context/Store';
-// import { getDefaultLayout } from 'widgets/pages/siteArea';
 
 router.events.on('routeChangeStart', () => NProgress.start());
 router.events.on('routeChangeComplete', () => NProgress.done());
@@ -31,11 +30,11 @@ function MainApp({ Component, pageProps, err }) {
                 <meta name="keywords" content="Keywords" />
             </Head>
             <ToastContainer
-                position="bottom-right"
+                position="bottom-left"
                 autoClose={5000}
                 pauseOnFocusLoss={false}
                 closeOnClick={false}
-                rtl
+                theme="dark"
             />
             <AppContext>
                 <div className="bg-black-900 min-h-screen">
