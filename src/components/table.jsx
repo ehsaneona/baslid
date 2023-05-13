@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
 import { cx } from 'class-variance-authority';
 import { Spinner } from '@/components/ui/spinner';
@@ -82,7 +82,7 @@ function Table({ headers, values, isLoading }) {
                                 />
                             </td>
                         </tr>
-                    ) : sortedValues ? (
+                    ) : !sortedValues.length ? (
                         <tr>
                             <td colSpan={10}>
                                 <div className="flex items-center justify-center mt-4 mb-3 font-semibold text-base">
