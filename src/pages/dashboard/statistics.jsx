@@ -48,10 +48,10 @@ function StatisticsPage() {
             <Head>
                 <title>Statistics | Baslid</title>
             </Head>
-            <div className="p-6 flex">
-                <div className="bg-black-800 rounded-lg min-w-fit">
-                    <div className="flex">
-                        <div className="flex flex-col justify-between py-6 px-4">
+            <div className="py-3 lg:p-6 flex flex-col lg:flex-row">
+                <div className="bg-black-800 lg:rounded-lg min-w-fit mb-3 lg:mb-0">
+                    <div className="flex flex-col lg:flex-row">
+                        <div className="flex flex-col justify-between pt-6 lg:py-6 px-4">
                             <div className="flex items-center text-white space-x-3">
                                 <img
                                     className="rounded-full w-12 h-12 object-cover"
@@ -68,16 +68,16 @@ function StatisticsPage() {
                                 </div>
                             </div>
                             <CopyCode
-                                className="mt-[18px] mb-[26px]"
+                                className="mt-[18px] lg:mb-[26px]"
                                 title="Your Code:"
                                 code={user.discountCode}
                             />
-                            <div className="flex justify-center pb-1.5">
+                            <div className="justify-center pb-1.5 hidden lg:flex">
                                 <img src="../logo-white.png" alt="logo" />
                             </div>
                         </div>
-                        <div className="p-2.5">
-                            <div className="p-6 bg-gradient-to-b from-yellow-400 to-yellow-500 rounded-md h-full flex items-center">
+                        <div className="p-4 lg:p-2.5">
+                            <div className="p-6 bg-gradient-to-b from-yellow-400 to-yellow-500 rounded-md h-full flex flex-col items-center justify-center">
                                 <div className="p-4 rounded-lg bg-white w-fit">
                                     <img
                                         height={125}
@@ -86,10 +86,10 @@ function StatisticsPage() {
                                         alt={user.discountCode}
                                     />
                                 </div>
-                                {/*<button className="bg-yellow-200 rounded-md py-2 px-3 flex items-center mx-auto mt-4 text-sm font-semibold">*/}
-                                {/*    <CopyIcon className="mr-2" />*/}
-                                {/*    Copy your link*/}
-                                {/*</button>*/}
+                                <button className="bg-yellow-200 rounded-md py-2 px-3 flex items-center mx-auto mt-4 text-sm font-semibold">
+                                    <CopyIcon className="mr-2" />
+                                    Copy your link
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -106,6 +106,7 @@ function StatisticsPage() {
                     linkTitle="See Details"
                     link="/dashboard/wallet"
                     pattern="right"
+                    className="mb-0"
                 />
             </div>
             <Table

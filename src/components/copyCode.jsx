@@ -10,7 +10,7 @@ function CopyCode({ title, code, isSlim, className }) {
         <div
             className={cx(
                 'bg-black-900 rounded-lg flex flex-col items-center justify-center space-y-1.5 px-4',
-                isSlim ? 'py-7' : 'py-10',
+                isSlim ? 'py-3 lg:py-7' : 'py-5 lg:py-10',
                 className
             )}
             style={{

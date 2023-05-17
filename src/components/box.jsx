@@ -17,7 +17,7 @@ function Box({
     return (
         <div
             className={cx(
-                'bg-black-800 rounded-lg ml-2 w-full flex flex-col overflow-clip relative',
+                'bg-black-800 lg:rounded-lg lg:ml-2 w-full flex flex-col overflow-clip relative mb-3 lg:mb-0',
                 className
             )}>
             <img

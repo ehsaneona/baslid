@@ -76,9 +76,9 @@ function DashboardLayout({ headerTitle, hasSearch, children }) {
                 user={user}
             />
             <div className="lg:pl-72 w-full">
-                <div className="w-full pl-0.5 ml-auto">
+                <div className="w-full lg:pl-0.5 lg:ml-auto">
                     {headerTitle && (
-                        <div className="px-10 py-4 h-20 bg-black-800 flex items-center justify-between w-full">
+                        <div className="px-6 lg:px-10 py-4 h-20 bg-black-800 flex items-center justify-between w-full">
                             <span className="font-semibold text-xl leading-none">
                                 {headerTitle}
                             </span>

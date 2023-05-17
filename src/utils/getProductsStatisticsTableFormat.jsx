@@ -16,7 +16,7 @@ export const getProductsStatisticsTableFormat = arr =>
                     alt="product image"
                     className="mr-2.5 w-12 h-12 rounded-lg object-cover"
                 />
-                {obj.name}
+                <span className="max-w-[200px] truncate">{obj.name}</span>
             </div>
         ),
         date: new Date(obj.date).toLocaleDateString('en-US', {
