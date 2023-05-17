@@ -35,8 +35,8 @@ function BurgurMenu({ navbarItems, user, onLogoutClick }) {
             </div>
             <div
                 className={cx(
-                    isOpen ? 'flex' : 'hidden',
-                    'lg:!flex w-72 bg-black-800 h-full p-4 flex-col justify-between fixed left-0 z-30'
+                    isOpen ? 'translate-x-0' : '-translate-x-full',
+                    'lg:translate-x-0 lg:-static w-3/4 lg:w-72 bg-black-800 h-full p-4 flex flex-col justify-between fixed left-0 z-30 transition-transform duration-300 ease-in-out'
                 )}>
                 <div className="space-y-2">
                     <div className="h-14 flex items-center justify-center">
@@ -61,7 +61,7 @@ function BurgurMenu({ navbarItems, user, onLogoutClick }) {
                                                 router.asPath === item.path,
                                         }
                                     )}
-                                    onClick={toggleMenu}>
+                                    onClick={() => setIsOpen(false)}>
                                     {React.cloneElement(item.icon, {
                                         isActive: router.asPath === item.path,
                                     })}
