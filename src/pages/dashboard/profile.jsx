@@ -90,9 +90,9 @@ function ProfilePage() {
                 <title>Profile | Baslid</title>
             </Head>
             <div>
-                <div className="bg-black-800 py-10">
+                <div className="bg-black-800 py-6 lg:py-10">
                     <div className="mx-auto max-w-[89%]">
-                        <div className="flex items-center">
+                        <div className="flex flex-col lg:flex-row items-center">
                             <div className="flex flex-col items-center justify-center min-w-fit">
                                 {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                                 <label
@@ -115,9 +115,9 @@ function ProfilePage() {
                                     onChange={onProfileAvatarChange}
                                 />
                             </div>
-                            <div className="ml-8 flex flex-col w-full">
-                                <div className="flex flex-col space-y-2 border-b border-gray-50 pb-5">
-                                    <span className="font-semibold text-xl flex items-center">
+                            <div className="lg:ml-8 flex flex-col w-full">
+                                <div className="flex flex-col space-y-2 border-b border-gray-50 mt-4 lg:mt-0 pb-4 lg:pb-5">
+                                    <span className="font-semibold text-xl flex items-center justify-center lg:justify-start">
                                         {getUserName(user)}
                                         <svg
                                             className="ml-1"
@@ -132,11 +132,11 @@ function ProfilePage() {
                                             />
                                         </svg>
                                     </span>
-                                    <span className="font-medium text-base text-gray-600">
+                                    <span className="font-medium text-base text-gray-600 text-center lg:text-left">
                                         @{getUserNameId(user)}
                                     </span>
                                 </div>
-                                <p className="pt-5 text-sm leading-8 text-gray-400">
+                                <p className="pt-4 lg:pt-5 text-sm leading-8 text-gray-400">
                                     Upload your Photo. The first image will be
                                     used as the thumbnail in feeds. Drag and
                                     drop up to 3 images to create a mutli-shot.
@@ -153,7 +153,7 @@ function ProfilePage() {
                             <div className="text-gray-600 font-medium text-base mb-6">
                                 Your Profile:
                             </div>
-                            <div className="flex w-full">
+                            <div className="flex flex-col lg:flex-row w-full">
                                 <Input
                                     type="text"
                                     placeholder="First name"
@@ -167,7 +167,7 @@ function ProfilePage() {
                                 <Input
                                     type="text"
                                     placeholder="Last name"
-                                    className="w-full ml-4"
+                                    className="w-full mt-2 lg:mt-0 lg:ml-4"
                                     isSlim
                                     defaultValue={user.lastName}
                                     {...register('lastName', {
@@ -175,7 +175,7 @@ function ProfilePage() {
                                     })}
                                 />
                             </div>
-                            <div className="flex w-full mt-4">
+                            <div className="flex flex-col lg:flex-row w-full mt-2 lg:mt-4">
                                 <Input
                                     type="tel"
                                     placeholder="Phone"
@@ -187,13 +187,13 @@ function ProfilePage() {
                                 <Input
                                     type="email"
                                     placeholder="Email"
-                                    className="w-full ml-4"
+                                    className="w-full mt-2 lg:mt-0 lg:ml-4"
                                     isSlim
                                     defaultValue={user.email}
                                     {...register('email', { required: true })}
                                 />
                             </div>
-                            <div className="flex w-full mt-4">
+                            <div className="flex flex-col lg:flex-row w-full mt-2 lg:mt-4">
                                 <Input
                                     type="text"
                                     placeholder="Account Type"
@@ -202,7 +202,7 @@ function ProfilePage() {
                                     defaultValue={getAccountType(user.type)}
                                     disabled
                                 />
-                                <div className="relative w-full ml-4">
+                                <div className="relative w-full mt-2 lg:mt-0 lg:ml-4">
                                     <Controller
                                         render={({ field: { onChange } }) => (
                                             <Select
@@ -239,7 +239,7 @@ function ProfilePage() {
                                     />
                                 </div>
                             </div>
-                            <div className="flex w-full mt-4">
+                            <div className="flex flex-col lg:flex-row w-full mt-2 lg:mt-4">
                                 <Input
                                     type="text"
                                     placeholder="Address"
@@ -248,7 +248,7 @@ function ProfilePage() {
                                     defaultValue={user.address}
                                     {...register('address')}
                                 />
-                                <div className="relative w-full ml-4">
+                                <div className="relative w-full mt-2 lg:mt-0 lg:ml-4">
                                     <Controller
                                         render={({ field: { onChange } }) => (
                                             <Select
@@ -287,14 +287,14 @@ function ProfilePage() {
                                     />
                                 </div>
                             </div>
-                            <div className="flex w-full mt-4">
+                            <div className="flex w-full mt-2 lg:mt-4">
                                 <Textarea
                                     placeholder="Bio"
                                     defaultValue={user.biography}
                                     {...register('biography')}
                                 />
                             </div>
-                            <div className="mt-4">
+                            <div className="mt-2 lg:mt-4">
                                 <Button className="w-full" type="submit">
                                     {isProfileLoading ? (
                                         <Spinner
@@ -317,7 +317,7 @@ function ProfilePage() {
                             <div className="text-gray-600 font-medium text-base mb-6">
                                 Change Password
                             </div>
-                            <div className="flex w-full mt-4">
+                            <div className="flex flex-col lg:flex-row w-full mt-4">
                                 <Input
                                     type="password"
                                     placeholder="Your Current Password"
@@ -333,14 +333,14 @@ function ProfilePage() {
                                 <Input
                                     type="password"
                                     placeholder="Your new Password"
-                                    className="w-full ml-4"
+                                    className="w-full mt-2 lg:mt-0 lg:ml-4"
                                     isSlim
                                     {...changePasswordRegister('password', {
                                         required: true,
                                     })}
                                 />
                             </div>
-                            <div className="mt-4">
+                            <div className="mt-2 lg:mt-4">
                                 <Button className="w-full" type="submit">
                                     {isChangePasswordLoading ? (
                                         <Spinner
@@ -372,7 +372,7 @@ function ProfilePage() {
                                     })}
                                 />
                             </div>
-                            <div className="mt-4">
+                            <div className="mt-2 lg:mt-4">
                                 <Button className="w-full" type="submit">
                                     {isPaypalLoading ? (
                                         <Spinner

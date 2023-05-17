@@ -31,17 +31,18 @@ function DiscountPage() {
             <Head>
                 <title>Discount | Baslid</title>
             </Head>
-            <div className="p-6">
-                <div className="bg-black-800 p-4 rounded-lg">
+            <div className="lg:p-6">
+                <div className="lg:bg-black-800 lg:p-4 lg:rounded-lg">
                     <CopyCode
-                        title="Your Code:"
+                        title="Your Discount code:"
                         code={user.discountCode}
                         isSlim
+                        className="bg-black-200 py-6 rounded-none lg:rounded-lg lg:bg-black-900"
                     />
                 </div>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className="mt-7 mx-auto max-w-8/10 space-y-5">
-                        <span className="text-xl font-medium">
+                    <div className="p-6 lg:p-0 mt-7 lg:mx-auto lg:max-w-8/10 space-y-3 lg:space-y-5">
+                        <span className="text-base lg:text-xl font-medium !mb-4 lg:mb-0">
                             Need more Discount? Let us know!
                         </span>
                         <Input

@@ -46,7 +46,7 @@ function WalletPage() {
     const getEarningHistory = async prevDays => {
         setEarningHistoryLoading(true);
         try {
-            const { data } = await earningHistoryApi(prevDays ?? 7);
+            const { data } = await earningHistoryApi(prevDays ?? 4);
             setEarningHistory(getEarningInChartFormat(data));
         } catch (e) {
             toast.error(e?.response?.data?.message);
@@ -71,8 +71,8 @@ function WalletPage() {
             <Head>
                 <title>Wallet | Baslid</title>
             </Head>
-            <div className="p-6 pb-0 mb-2">
-                <div className="flex mb-2">
+            <div className="pt-3 lg:p-6 pb-0 mb-2">
+                <div className="flex flex-col lg:flex-row lg:mb-2">
                     <Box
                         className="!ml-0"
                         title="Your Sales"
@@ -95,29 +95,31 @@ function WalletPage() {
                         linkIcon={false}
                     />
                 </div>
-                <div className="w-full bg-black-800 rounded-lg p-4">
+                <div className="w-full bg-black-800 lg:rounded-lg p-4">
                     <div className="flex justify-between items-center">
                         <span className="inline-flex font-semibold text-xl pl-2">
                             Earnings History
                         </span>
-                        <Select
-                            onValueChange={e => {
-                                getEarningHistory(e);
-                            }}>
-                            <SelectTrigger className="w-fit" isSlim outline>
-                                <SelectValue placeholder="Last 7 Days" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                <SelectGroup>
-                                    <SelectItem value={7}>
-                                        Last 7 Days
-                                    </SelectItem>
-                                    <SelectItem value={14}>
-                                        Last 14 Days
-                                    </SelectItem>
-                                </SelectGroup>
-                            </SelectContent>
-                        </Select>
+                        <div className="hidden lg:block">
+                            <Select
+                                onValueChange={e => {
+                                    getEarningHistory(e);
+                                }}>
+                                <SelectTrigger className="w-fit" isSlim outline>
+                                    <SelectValue placeholder="Last 4 Days" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectGroup>
+                                        <SelectItem value={4}>
+                                            Last 4 Days
+                                        </SelectItem>
+                                        <SelectItem value={7}>
+                                            Last 7 Days
+                                        </SelectItem>
+                                    </SelectGroup>
+                                </SelectContent>
+                            </Select>
+                        </div>
                     </div>
                     <div className="h-80 flex items-center justify-center mt-6">
                         {earningHistoryLoading && (

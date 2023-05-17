@@ -15,7 +15,7 @@ function Chart({ data }) {
             data={data}
             keys={['earn']}
             indexBy="date"
-            margin={{ top: 5, right: 0, bottom: 25, left: 45 }}
+            margin={{ top: 5, right: 0, bottom: 25, left: 30 }}
             padding={0.8}
             groupMode="grouped"
             valueScale={{ type: 'linear' }}
