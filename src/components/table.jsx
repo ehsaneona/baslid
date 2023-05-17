@@ -40,7 +40,7 @@ function Table({ headers, values, isLoading }) {
 
     return (
         <div className="overflow-x-auto bg-black-800 p-2.5">
-            <table className="table-auto w-full rounded-lg">
+            <table className="table-auto w-full rounded-lg whitespace-nowrap">
                 <thead>
                     <tr className="bg-transparent border-b-2 border-b-gray-50">
                         {headers.map(header => (
