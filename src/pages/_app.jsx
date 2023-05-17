@@ -30,7 +30,7 @@ function MainApp({ Component, pageProps, err }) {
                 <meta name="keywords" content="Keywords" />
             </Head>
             <ToastContainer
-                position="bottom-left"
+                position="top-left"
                 autoClose={5000}
                 pauseOnFocusLoss={false}
                 closeOnClick={false}

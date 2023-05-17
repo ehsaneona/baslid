@@ -19,6 +19,7 @@ const Input = React.forwardRef(({ className, isSlim, type, ...props }, ref) => {
             {type === 'password' && (
                 <button
                     className="absolute top-1/2 right-5 -translate-y-1/2 focus:outline-none"
+                    type="button"
                     onClick={() => setShowPassword(!showPassword)}>
                     {!showPassword ? (
                         <svg

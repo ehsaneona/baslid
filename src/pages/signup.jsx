@@ -50,7 +50,7 @@ function RegisterPage() {
             </p>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="mt-5 space-y-4">
-                    <div className="flex space-x-4">
+                    <div className="space-y-4 lg:space-y-0 lg:flex lg:space-x-4">
                         <Input
                             type="text"
                             placeholder="First name"

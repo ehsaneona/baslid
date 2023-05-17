@@ -20,11 +20,16 @@ function AuthLayout({ children }) {
         );
 
     return (
-        <div className="flex text-white h-screen">
-            <div className="bg-black-800 w-full h-full flex flex-col !justify-center !items-center text-center">
-                <div className="max-w-1/2">{children}</div>
+        <div className="flex text-white min-h-screen bg-black-800 lg:bg-transparent">
+            <div className="bg-black-800 w-full flex flex-col justify-center items-center text-center">
+                <div className="p-6 lg:p-0 lg:max-w-1/2">{children}</div>
+                <img
+                    className="my-6 lg:hidden"
+                    src="/logo-white.png"
+                    alt="logo"
+                />
             </div>
-            <div className="h-full w-9/12 flex !justify-center !items-center relative">
+            <div className="w-9/12 !justify-center !items-center relative hidden lg:flex">
                 <img src="image/signin-vector.png" alt="vector" />
                 <img
                     className="absolute bottom-12"
