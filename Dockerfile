@@ -9,7 +9,7 @@ ARG NEXT_PUBLIC_WEBSITE_URL
 
 COPY package.json ./
 COPY . ./
-RUN yarn
-RUN yarn build
+RUN npm i
+RUN npm run build
 
 CMD yarn start
