@@ -15,6 +15,7 @@
   "author": "Ehsan Akbarzadeh",
   "license": "MIT",
   "dependencies": {
+    "@amraneze/react-instagram-login": "3.0.3",
     "@nivo/bar": "0.67.0",
     "@nivo/core": "0.67.0",
     "@radix-ui/react-dropdown-menu": "2.0.4",
