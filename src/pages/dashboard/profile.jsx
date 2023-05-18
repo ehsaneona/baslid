@@ -137,11 +137,7 @@ function ProfilePage() {
                                     </span>
                                 </div>
                                 <p className="pt-4 lg:pt-5 text-sm leading-8 text-gray-400">
-                                    Upload your Photo. The first image will be
-                                    used as the thumbnail in feeds. Drag and
-                                    drop up to 3 images to create a mutli-shot.
-                                    Drag and drop up to 3 images to create a
-                                    mutli-shot.
+                                    {user.biography}
                                 </p>
                             </div>
                         </div>
