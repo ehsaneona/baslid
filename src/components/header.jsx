@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { cx } from 'class-variance-authority';
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import BasketIcon from '@/components/icons/basketIcon';
 import {
@@ -15,6 +15,7 @@ import { toast } from 'react-toastify';
 const Header = () => {
     const router = useRouter();
     const { basket, setBasket } = useProvider();
+    const [code, setCode] = useState(null);
     const navItems = [
         { name: 'Home', path: '/' },
         { name: 'Products', path: '/products' },
@@ -78,30 +79,59 @@ const Header = () => {
                             </div>
                         ))}
                         {!!basket.length && (
-                            <button
-                                className="rounded-full px-8 h-12 font-medium text-xl hover:bg-transparent hover:text-black-900 hover:border hover:border-black-900 transition-colors bg-black-900 text-white flex items-center justify-center border mt-4 mx-auto"
-                                onClick={() => {
-                                    try {
-                                        basket.forEach(async product => {
-                                            buyProductApi({
-                                                name: product.name,
-                                                image: product.image,
-                                                date: getCurrentDate(),
-                                                tendered: 50,
-                                                earning: 20,
-                                                status: 1,
-                                            });
-                                        });
-                                        toast.success('Successfully Payed.');
-                                        setBasket([]);
-                                    } catch (e) {
-                                        toast.error(
-                                            'Oops, We have some problems here!'
-                                        );
-                                    }
-                                }}>
-                                Pay
-                            </button>
+                            <>
+                                <div className="w-full flex items-center border-b-2 border-b-gray-800 py-2.5">
+                                    <input
+                                        type="text"
+                                        placeholder="Enter Code"
+                                        className="w-full placeholder:text-gray-900 outline-none text-black-900"
+                                        onChange={e => setCode(e.target.value)}
+                                        value={code}
+                                    />
+                                </div>
+                                <button
+                                    className="rounded-full px-8 h-12 font-medium text-xl hover:bg-transparent hover:text-black-900 hover:border hover:border-black-900 transition-colors bg-black-900 text-white flex items-center justify-center border mt-4 mx-auto"
+                                    onClick={async () => {
+                                        if (!code)
+                                            return toast.error(
+                                                'Code is require.'
+                                            );
+
+                                        try {
+                                            await Promise.all(
+                                                basket.map(async product => {
+                                                    const response =
+                                                        await buyProductApi(
+                                                            code,
+                                                            {
+                                                                name: product.name,
+                                                                image: product.image,
+                                                                date: getCurrentDate(),
+                                                                tendered: 50,
+                                                                earning: 20,
+                                                                status: 1,
+                                                            }
+                                                        );
+                                                    if (response.error) {
+                                                        throw new Error(
+                                                            'There was an error processing the request'
+                                                        );
+                                                    }
+                                                    return response;
+                                                })
+                                            );
+
+                                            toast.success('Successfully paid.');
+                                            setBasket([]);
+                                        } catch (e) {
+                                            toast.error(
+                                                'Your code is wrong, please enter a valid code.'
+                                            );
+                                        }
+                                    }}>
+                                    Pay
+                                </button>
+                            </>
                         )}
                     </PopoverContent>
                 </Popover>
