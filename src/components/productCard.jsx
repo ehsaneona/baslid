@@ -19,6 +19,9 @@ const ProductCard = ({ product }) => {
                     </div>
                 </div>
                 <div className="font-semibold text-xl">Muscletech Vitamin</div>
+                <button className="rounded-full px-12 h-14 font-medium text-xl hover:bg-transparent hover:text-black-900 hover:border hover:border-black-900 transition-colors bg-black-900 text-white flex items-center justify-center border mt-4 mx-auto">
+                    Buy
+                </button>
             </div>
         </div>
     );
