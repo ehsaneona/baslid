@@ -45,14 +45,17 @@ function IndexPage() {
                         See and buy our new Product
                     </h4>
                 </div>
-                <div className="mt-44">
-                    <div className="text-end text-lg">42 Products</div>
+                <div className="mt-44" id="products">
+                    <div className="text-end text-lg">5 Products</div>
                     <div className="grid grid-cols-3 gap-14 mt-10">
                         {[1, 2, 3, 4, 5].map((product, index) => (
                             <ProductCard
                                 key={index}
                                 product={{
+                                    id: index + 1,
                                     image: `/products/${index + 1}.png`,
+                                    price: 100,
+                                    name: 'Muscletech Vitamin',
                                 }}
                             />
                         ))}

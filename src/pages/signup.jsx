@@ -145,7 +145,7 @@ function RegisterPage() {
             </form>
             <div className="text-gray-500 mt-5">
                 Already have an account?{' '}
-                <Link href="/">
+                <Link href="/signin">
                     <span className="text-white cursor-pointer">Login</span>
                 </Link>
             </div>

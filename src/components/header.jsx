@@ -1,17 +1,34 @@
 import Link from 'next/link';
 import { cx } from 'class-variance-authority';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import BasketIcon from '@/components/icons/basketIcon';
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from '@/components/ui/popover';
+import { useProvider } from '@/context/Store';
+import { buyProductApi } from '@/services/buyProduct';
+import { toast } from 'react-toastify';
 
 const Header = () => {
     const router = useRouter();
+    const { basket, setBasket } = useProvider();
     const navItems = [
         { name: 'Home', path: '/' },
         { name: 'Products', path: '/products' },
         { name: 'Customers', path: '/customers' },
         { name: 'About us', path: '/about-us' },
     ];
+
+    const getCurrentDate = () => {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    };
 
     return (
         <div className="flex items-center justify-between pt-9">
@@ -32,17 +49,62 @@ const Header = () => {
                 </div>
             </div>
             <div className="flex items-center">
-                <a
-                    href="#products"
-                    className="rounded-full px-12 h-14 font-medium text-xl hover:bg-transparent hover:text-black-900 hover:border hover:border-black-900 transition-colors bg-black-900 text-white flex items-center justify-center border mr-4">
-                    Sign in
-                </a>
-                <div className="flex items-center space-x-2 cursor-pointer">
-                    <BasketIcon />
-                    <span className="rounded-full bg-black-900 w-7 h-7 text-white flex items-center justify-center">
-                        0
-                    </span>
-                </div>
+                <Popover>
+                    <PopoverTrigger>
+                        <div className="flex items-center space-x-2 cursor-pointer">
+                            <BasketIcon />
+                            <span className="rounded-full bg-black-900 w-7 h-7 text-white flex items-center justify-center">
+                                {basket.length}
+                            </span>
+                        </div>
+                    </PopoverTrigger>
+                    <PopoverContent>
+                        {!basket.length && (
+                            <h3 className="font-bold text-lg text-center">
+                                You have not added a product
+                            </h3>
+                        )}
+                        {basket.map(product => (
+                            <div className="flex mb-4" key={product.id}>
+                                <img
+                                    src={product.image}
+                                    className="w-16 h-16 object-contain border border-gray-750"
+                                    alt=""
+                                />
+                                <div className="ml-4">
+                                    <div>{product.name}</div>
+                                    <div>{product.price}$</div>
+                                </div>
+                            </div>
+                        ))}
+                        {!!basket.length && (
+                            <button
+                                className="rounded-full px-8 h-12 font-medium text-xl hover:bg-transparent hover:text-black-900 hover:border hover:border-black-900 transition-colors bg-black-900 text-white flex items-center justify-center border mt-4 mx-auto"
+                                onClick={() => {
+                                    try {
+                                        basket.forEach(async product => {
+                                            buyProductApi({
+                                                name: product.name,
+                                                image: product.image,
+                                                date: getCurrentDate(),
+                                                tendered: 50,
+                                                earning: 20,
+                                                status: 1,
+                                            });
+                                        });
+                                        toast.success('Successfully Payed.');
+                                        setBasket([]);
+                                    } catch (e) {
+                                        toast.error(
+                                            'Oops, We have some problems here!'
+                                        );
+                                    }
+                                }}>
+                                Pay
+                            </button>
+                        )}
+                    </PopoverContent>
+                </Popover>
             </div>
         </div>
     );

@@ -5,12 +5,15 @@ import Context, { Provider } from './Context';
 // eslint-disable-next-line react/prop-types
 function AppContext({ children }) {
     const [user, setUser] = useState(null);
+    const [basket, setBasket] = useState([]);
 
     return (
         <Provider
             value={{
                 user,
                 setUser,
+                basket,
+                setBasket,
             }}>
             {children}
         </Provider>

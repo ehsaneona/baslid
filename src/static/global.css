@@ -4,6 +4,10 @@
 @tailwind utilities;
 @import "react-toastify/dist/ReactToastify.css";
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Barlow', sans-serif;
 }

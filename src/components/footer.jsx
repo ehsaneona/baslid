@@ -32,8 +32,8 @@ const Footer = () => {
             <div className="max-w-7xl mx-auto px-14 pb-14">
                 <div className="flex items-center justify-between border-t-2 border-t-gray-800 pt-8">
                     <div className="text-sm">
-                        <span className="font-bold">Baslid</span> is a
-                        registered trademark © All rights reserved 2021
+                        <span className="font-bold">Baslid</span>© All rights
+                        reserved 2021
                     </div>
                     <div className="flex space-x-12 ml-20">
                         {navItems.map(item => (
