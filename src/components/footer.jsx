@@ -33,7 +33,7 @@ const Footer = () => {
                 <div className="flex items-center justify-between border-t-2 border-t-gray-800 pt-8">
                     <div className="text-sm">
                         <span className="font-bold">Baslid</span>© All rights
-                        reserved 2021
+                        reserved 2023
                     </div>
                     <div className="flex space-x-12 ml-20">
                         {navItems.map(item => (
