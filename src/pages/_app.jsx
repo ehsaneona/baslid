@@ -37,9 +37,7 @@ function MainApp({ Component, pageProps, err }) {
                 theme="dark"
             />
             <AppContext>
-                <div className="bg-black-900 min-h-screen">
-                    {getLayout(<Component {...pageProps} err={err} />)}
-                </div>
+                {getLayout(<Component {...pageProps} err={err} />)}
             </AppContext>
         </>
     );

@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { cx } from 'class-variance-authority';
-import ArrowIcon from '@/components/icons/ArrowIcon';
+import ArrowIcon from '@/components/icons/arrowIcon';
 
 function Box({
     title,
