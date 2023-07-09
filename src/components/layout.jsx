@@ -9,7 +9,7 @@ function Layout({ children }) {
     return (
         <div className="min-h-screen max-w-7xl mx-auto px-3">
             <Header />
-            <div className="mt-44">{children}</div>
+            <div className="mt-20 lg:mt-44">{children}</div>
             <Footer />
         </div>
     );

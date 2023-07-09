@@ -32,10 +32,10 @@ const Header = () => {
     };
 
     return (
-        <div className="flex items-center justify-between pt-9">
+        <div className="flex items-center justify-between pt-5 lg:pt-9">
             <div className="flex items-center">
                 <img src="/logo-black.png" alt="logo" />
-                <div className="flex space-x-12 ml-20">
+                <div className="hidden lg:flex space-x-12 ml-20">
                     {navItems.map(item => (
                         <Link key={item.path} href={item.path}>
                             <a

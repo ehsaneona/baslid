@@ -20,18 +20,20 @@ function IndexPage() {
             </Head>
             <div>
                 <div className="text-center">
-                    <h2 className="text-2xl">Gainer</h2>
-                    <h1 className="text-[88px]">Fitness Collection</h1>
-                    <h3 className="text-3xl font-medium">
+                    <h2 className="text-sm lg:text-2xl">Gainer</h2>
+                    <h1 className="text-[44px] lg:text-[88px]">
+                        Fitness Collection
+                    </h1>
+                    <h3 className="text-base lg:text-3xl font-medium">
                         Shape your Ideal Body with our products
                     </h3>
                     <a
                         href="#products"
-                        className="max-w-fit mx-auto rounded-full border border-black-900 px-12 h-14 flex items-center justify-center font-medium text-xl mt-9 hover:bg-black-900 hover:text-white transition-colors">
+                        className="max-w-fit mx-auto rounded-full border border-black-900 px-6 lg:px-12 h-12 lg:h-14 flex items-center justify-center font-medium text-lg lg:text-xl mt-9 hover:bg-black-900 hover:text-white transition-colors">
                         Buy now
                     </a>
                 </div>
-                <div className="w-full max-h-[576px] my-44">
+                <div className="w-full max-h-[576px] my-20 lg:my-44">
                     <img
                         className="w-full h-full object-cover"
                         src="/banner.png"
@@ -39,15 +41,15 @@ function IndexPage() {
                     />
                 </div>
                 <div className="text-center">
-                    <h4 className="text-2xl">Shop</h4>
-                    <h4 className="text-[88px]">Our Product</h4>
-                    <h4 className="text-3xl font-medium">
+                    <h4 className="text-sm lg:text-2xl">Shop</h4>
+                    <h4 className="text-[44px] lg:text-[88px]">Our Product</h4>
+                    <h4 className="text-base lg:text-3xl font-medium">
                         See and buy our new Product
                     </h4>
                 </div>
-                <div className="mt-44" id="products">
+                <div className="mt-20 lg:mt-44" id="products">
                     <div className="text-end text-lg">5 Products</div>
-                    <div className="grid grid-cols-3 gap-14 mt-10">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-14 mt-10">
                         {[1, 2, 3, 4, 5].map((product, index) => (
                             <ProductCard
                                 key={index}
@@ -61,10 +63,12 @@ function IndexPage() {
                         ))}
                     </div>
                 </div>
-                <div className="mt-44 flex items-center justify-between">
+                <div className="mt-20 lg:mt-44 flex items-center justify-between">
                     <div className="flex flex-col">
-                        <span className="mb-2 uppercase">Our Works</span>
-                        <span className="font-medium text-4xl leading-snug uppercase">
+                        <span className="mb-2 uppercase text-sm lg:text-base">
+                            Our Works
+                        </span>
+                        <span className="font-medium text-lg lg:text-4xl leading-snug uppercase">
                             See how others are feeling <br /> about us
                         </span>
                     </div>
@@ -81,11 +85,16 @@ function IndexPage() {
                         </button>
                     </div>
                 </div>
-                <div className="mt-44">
+                <div className="mt-20 lg:mt-44">
                     <Swiper
                         modules={[Navigation]}
                         spaceBetween={30}
-                        slidesPerView={3}
+                        slidesPerView={1}
+                        breakpoints={{
+                            768: {
+                                slidesPerView: 3,
+                            },
+                        }}
                         navigation={{
                             prevEl: navigationPrevRef.current,
                             nextEl: navigationNextRef.current,

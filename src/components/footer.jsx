@@ -13,8 +13,8 @@ const Footer = () => {
     ];
 
     return (
-        <div className="border-t-2 border-t-gray-800 mt-44">
-            <div className="max-w-4xl mx-auto text-center p-14">
+        <div className="border-t-2 border-t-gray-800 mt-20 lg:mt-44">
+            <div className="max-w-4xl mx-auto text-center p-7 lg:p-14">
                 <div className="text-4xl font-medium">Join Our List</div>
                 <div className="mt-10">
                     Signup to be the first to hear about exclusive deals,
@@ -29,13 +29,13 @@ const Footer = () => {
                     <button className="font-medium">Subscribe</button>
                 </div>
             </div>
-            <div className="max-w-7xl mx-auto px-14 pb-14">
-                <div className="flex items-center justify-between border-t-2 border-t-gray-800 pt-8">
-                    <div className="text-sm">
-                        <span className="font-bold">Baslid</span>© All rights
+            <div className="max-w-7xl mx-auto lg:px-14 pb-7 lg:pb-14">
+                <div className="flex flex-col items-center justify-between border-t-2 border-t-gray-800 pt-8">
+                    <div className="text-sm mb-4 lg:mb-0">
+                        <span className="font-bold">Baslid</span> © All rights
                         reserved 2023
                     </div>
-                    <div className="flex space-x-12 ml-20">
+                    <div className="hidden lg:flex space-x-12 lg:ml-20">
                         {navItems.map(item => (
                             <Link key={item.path} href={item.path}>
                                 <a className="font-medium relative">
