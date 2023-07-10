@@ -30,7 +30,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="max-w-7xl mx-auto lg:px-14 pb-7 lg:pb-14">
-                <div className="flex flex-col items-center justify-between border-t-2 border-t-gray-800 pt-8">
+                <div className="flex flex-col lg:flex-row items-center justify-between border-t-2 border-t-gray-800 pt-8">
                     <div className="text-sm mb-4 lg:mb-0">
                         <span className="font-bold">Baslid</span> © All rights
                         reserved 2023

@@ -10,4 +10,25 @@ const clearToken = () => {
     localStorage.removeItem(`token`);
 };
 
-export { setToken, getToken, clearToken };
+const getStrapiToken = () => {
+    if (typeof localStorage === 'undefined') return null;
+
+    return localStorage.getItem(`strapiToken`);
+};
+
+const setStrapiToken = token => {
+    localStorage.setItem(`strapiToken`, token);
+};
+
+const clearStrapiToken = () => {
+    localStorage.removeItem(`strapiToken`);
+};
+
+export {
+    setToken,
+    getToken,
+    clearToken,
+    getStrapiToken,
+    setStrapiToken,
+    clearStrapiToken,
+};

@@ -8,8 +8,10 @@ import { Navigation } from 'swiper/modules';
 import CommentCard from '@/components/commentCard';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { productsApi } from '@/services/products';
+import { getStrapiAsset } from '@/utils/getStrapiAsset';
 
-function IndexPage() {
+function IndexPage({ products }) {
     const navigationPrevRef = useRef(null);
     const navigationNextRef = useRef(null);
 
@@ -48,16 +50,21 @@ function IndexPage() {
                     </h4>
                 </div>
                 <div className="mt-20 lg:mt-44" id="products">
-                    <div className="text-end text-lg">5 Products</div>
+                    <div className="text-end text-lg">
+                        {products.length} Products
+                    </div>
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-14 mt-10">
-                        {[1, 2, 3, 4, 5].map((product, index) => (
+                        {products.map(product => (
                             <ProductCard
-                                key={index}
+                                key={product.id}
                                 product={{
-                                    id: index + 1,
-                                    image: `/products/${index + 1}.png`,
-                                    price: 100,
-                                    name: 'Muscletech Vitamin',
+                                    id: product.id,
+                                    image: getStrapiAsset(
+                                        product.attributes.image.data.attributes
+                                            .url
+                                    ),
+                                    price: product.attributes.price,
+                                    name: product.attributes.name,
                                 }}
                             />
                         ))}
@@ -109,6 +116,22 @@ function IndexPage() {
             </div>
         </>
     );
+}
+
+export async function getStaticProps() {
+    try {
+        const products = await productsApi();
+
+        return {
+            props: {
+                products: products.data,
+            },
+            revalidate: 3600,
+        };
+    } catch (err) {
+        console.log(err);
+        return { notFound: true };
+    }
 }
 
 IndexPage.getLayout = function getLayout(page) {

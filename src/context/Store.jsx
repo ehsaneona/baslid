@@ -5,6 +5,7 @@ import Context, { Provider } from './Context';
 // eslint-disable-next-line react/prop-types
 function AppContext({ children }) {
     const [user, setUser] = useState(null);
+    const [strapiUser, setStrapiUser] = useState(null);
     const [basket, setBasket] = useState([]);
 
     return (
@@ -12,6 +13,8 @@ function AppContext({ children }) {
             value={{
                 user,
                 setUser,
+                strapiUser,
+                setStrapiUser,
                 basket,
                 setBasket,
             }}>

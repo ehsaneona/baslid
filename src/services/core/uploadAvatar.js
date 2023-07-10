@@ -1,4 +1,4 @@
-import { client } from '@/services/client';
+import { client } from './client';
 
 export const uploadAvatarApi = async file => {
     const formData = new FormData();
