@@ -21,13 +21,13 @@ function Layout({ children }) {
         }
     }, []);
     useEffect(async () => {
-        if (router.query.paymentId) {
+        if (router.query.paymentId && router.query.code) {
             try {
-                await validatePaymentApi({
+                const result = await validatePaymentApi({
                     paymentId: router.query.paymentId,
                     code: router.query.code,
                 });
-                toast.success('Your payment was successful.');
+                if (result) toast.success('Your payment was successful.');
             } catch (e) {}
         }
     }, [router]);

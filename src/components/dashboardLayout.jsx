@@ -5,6 +5,7 @@ import HomeIcon from '@/components/icons/homeIcon';
 import WalletIcon from '@/components/icons/walletIcon';
 import ProductIcon from '@/components/icons/productIcon';
 import SettingIcon from '@/components/icons/settingIcon';
+import UserIcon from '@/components/icons/userIcon';
 import { profileApi } from '@/services/core/profile';
 import { useProvider } from '@/context/Store';
 import { Spinner } from '@/components/ui/spinner';
@@ -15,7 +16,7 @@ import BurgurMenu from '@/components/burgurMenu';
 
 function DashboardLayout({ headerTitle, hasSearch, children }) {
     const router = useRouter();
-    const { user, setUser } = useProvider();
+    const { user, setUser, isSuperAdmin } = useProvider();
     const navbarItems = [
         {
             title: 'Dashboard',
@@ -32,6 +33,15 @@ function DashboardLayout({ headerTitle, hasSearch, children }) {
             icon: <ProductIcon className="mr-2" />,
             path: '/dashboard/discount',
         },
+        ...(isSuperAdmin
+            ? [
+                  {
+                      title: 'Users',
+                      icon: <UserIcon className="mr-2" />,
+                      path: '/dashboard/users',
+                  },
+              ]
+            : []),
         {
             title: 'Profile and Settings',
             icon: <SettingIcon className="mr-2" />,

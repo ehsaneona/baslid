@@ -7,6 +7,7 @@ function AppContext({ children }) {
     const [user, setUser] = useState(null);
     const [strapiUser, setStrapiUser] = useState(null);
     const [basket, setBasket] = useState([]);
+    const isSuperAdmin = user?.email === 'admin@baslid.com';
 
     return (
         <Provider
@@ -17,6 +18,7 @@ function AppContext({ children }) {
                 setStrapiUser,
                 basket,
                 setBasket,
+                isSuperAdmin,
             }}>
             {children}
         </Provider>

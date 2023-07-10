@@ -42,7 +42,10 @@ const Header = () => {
         setPayIsLoading(true);
         try {
             const stripe = await stripePromise;
-            const { stripeSession } = await ordersApi(basket, code);
+            const { stripeSession } = await ordersApi(
+                basket,
+                code ?? 168901710017
+            );
             await stripe.redirectToCheckout({
                 sessionId: stripeSession.id,
             });
@@ -253,7 +256,7 @@ const Header = () => {
                                         placeholder="Enter Code"
                                         className="w-full placeholder:text-gray-900 outline-none text-black-900"
                                         {...payRegister('code', {
-                                            required: true,
+                                            required: false,
                                         })}
                                     />
                                 </div>

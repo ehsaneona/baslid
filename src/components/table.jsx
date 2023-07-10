@@ -3,7 +3,7 @@ import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
 import { cx } from 'class-variance-authority';
 import { Spinner } from '@/components/ui/spinner';
 
-function Table({ headers, values, isLoading }) {
+function Table({ headers, values, isLoading, className }) {
     const [sortColumn, setSortColumn] = useState(headers[0].key);
     const [sortOrder, setSortOrder] = useState('asc');
 
@@ -39,7 +39,7 @@ function Table({ headers, values, isLoading }) {
     });
 
     return (
-        <div className="overflow-x-auto bg-black-800  lg:p-2.5">
+        <div className={cx('overflow-x-auto bg-black-800 lg:p-2.5', className)}>
             <table className="table-auto w-full rounded-lg whitespace-nowrap">
                 <thead>
                     <tr className="bg-transparent border-b-2 border-b-gray-50">
@@ -82,11 +82,11 @@ function Table({ headers, values, isLoading }) {
                                 />
                             </td>
                         </tr>
-                    ) : !sortedValues.length ? (
+                    ) : !sortedValues?.length ? (
                         <tr>
                             <td colSpan={10}>
                                 <div className="flex items-center justify-center mt-4 mb-3 font-semibold text-base">
-                                    No product!
+                                    No Data!
                                 </div>
                             </td>
                         </tr>
@@ -95,18 +95,31 @@ function Table({ headers, values, isLoading }) {
                             <tr
                                 key={row.id}
                                 className="hover:bg-gray-200 border-b border-b-gray-50 last:border-0">
-                                {headers.map(header => (
-                                    <td
-                                        key={header.key}
-                                        className={cx(
-                                            'px-4 py-2 text-gray-700 font-semibold first:rounded-l-lg last:rounded-r-lg',
-                                            {
-                                                'text-center': !header.left,
-                                            }
-                                        )}>
-                                        {row[header.key]}
-                                    </td>
-                                ))}
+                                {headers.map(header =>
+                                    header.key === 'action' ? (
+                                        <td
+                                            key={header.key}
+                                            className={cx(
+                                                'px-4 py-2 text-gray-700 font-semibold first:rounded-l-lg last:rounded-r-lg',
+                                                {
+                                                    'text-center': !header.left,
+                                                }
+                                            )}>
+                                            {header.content(row.id)}
+                                        </td>
+                                    ) : (
+                                        <td
+                                            key={header.key}
+                                            className={cx(
+                                                'px-4 py-2 text-gray-700 font-semibold first:rounded-l-lg last:rounded-r-lg',
+                                                {
+                                                    'text-center': !header.left,
+                                                }
+                                            )}>
+                                            {row[header.key]}
+                                        </td>
+                                    )
+                                )}
                             </tr>
                         ))
                     )}

@@ -107,8 +107,8 @@ function IndexPage({ products }) {
                             nextEl: navigationNextRef.current,
                         }}>
                         {[6, 7, 8, 9, 10].map((item, index) => (
-                            <SwiperSlide>
-                                <CommentCard key={index} />
+                            <SwiperSlide key={index}>
+                                <CommentCard />
                             </SwiperSlide>
                         ))}
                     </Swiper>
