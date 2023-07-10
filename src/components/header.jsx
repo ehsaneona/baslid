@@ -42,7 +42,7 @@ const Header = () => {
         setPayIsLoading(true);
         try {
             const stripe = await stripePromise;
-            const { stripeSession } = await ordersApi(basket);
+            const { stripeSession } = await ordersApi(basket, code);
             await stripe.redirectToCheckout({
                 sessionId: stripeSession.id,
             });

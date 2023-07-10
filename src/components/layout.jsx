@@ -4,8 +4,12 @@ import Footer from '@/components/footer';
 import { getStrapiToken } from '@/lib/localstorage';
 import { useProvider } from '@/context/Store';
 import { meApi } from '@/services/me';
+import { useRouter } from 'next/router';
+import { validatePaymentApi } from '@/services/validatePayment';
+import { toast } from 'react-toastify';
 
 function Layout({ children }) {
+    const router = useRouter();
     const { strapiUser, setStrapiUser } = useProvider();
 
     useEffect(async () => {
@@ -16,6 +20,17 @@ function Layout({ children }) {
             }
         }
     }, []);
+    useEffect(async () => {
+        if (router.query.paymentId) {
+            try {
+                await validatePaymentApi({
+                    paymentId: router.query.paymentId,
+                    code: router.query.code,
+                });
+                toast.success('Your payment was successful.');
+            } catch (e) {}
+        }
+    }, [router]);
 
     return (
         <div className="min-h-screen max-w-7xl mx-auto px-3">
