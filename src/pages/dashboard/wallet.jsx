@@ -89,7 +89,7 @@ function WalletPage() {
                     />
                     <Box
                         title="Total Paid Out"
-                        value="$0"
+                        value={`$${user.paidOut}`}
                         linkTitle="Update your payout method in Settings"
                         pattern="right"
                         linkIcon={false}

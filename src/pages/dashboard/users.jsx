@@ -13,6 +13,7 @@ import { getProductsStatisticsTableFormat } from '@/utils/getProductsStatisticsT
 import { toast } from 'react-toastify';
 import { usersApi } from '@/services/core/users';
 import { updateProfileApi } from '@/services/core/updateProfile';
+import { payoutApi } from '@/services/core/payout';
 
 function StatisticsPage() {
     const [isLoading, setIsLoading] = useState(false);
@@ -27,13 +28,14 @@ function StatisticsPage() {
         try {
             const users = await usersApi();
             setUsers(users.data.content);
-            console.log(users);
         } catch (e) {}
         setIsLoading(false);
     };
-    const updateBalance = async () => {
+    const updateBalance = async userId => {
         setIsLoading(true);
         try {
+            await payoutApi(userId);
+            getUsers();
             toast.success('paid out.');
         } catch (e) {
             toast.error(e?.response?.data?.message);

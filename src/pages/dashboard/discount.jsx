@@ -21,7 +21,7 @@ function DiscountPage() {
     const [users, setUsers] = useState(null);
 
     useEffect(() => {
-        getUsers();
+        if (isSuperAdmin) getUsers();
     }, []);
 
     const getUsers = async () => {
@@ -29,12 +29,20 @@ function DiscountPage() {
         try {
             const users = await usersApi(1);
             setUsers(users.data.content);
-            console.log(users);
         } catch (e) {}
         setIsUsersLoading(false);
     };
-    const changeDiscountStatus = async data => {
+    const onSubmit = async formData => {
         setIsLoading(true);
+        try {
+            const { data } = await updateProfileApi(formData);
+            toast.success('Updated successfully');
+        } catch (e) {
+            toast.error(e?.response?.data?.message);
+        }
+        setIsLoading(false);
+    };
+    const changeDiscountStatus = async data => {
         try {
             await discountStatusApi(data);
             getUsers();
@@ -42,7 +50,6 @@ function DiscountPage() {
         } catch (e) {
             toast.error(e?.response?.data?.message);
         }
-        setIsLoading(false);
     };
 
     const tableHeaders = [
