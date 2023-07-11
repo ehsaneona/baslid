@@ -39,6 +39,7 @@ const Header = () => {
     const { register: payRegister, handleSubmit: payHandleSubmit } = useForm();
 
     const onPayButtonClick = async ({ code }) => {
+        if (!strapiUser) return toast.info('You need to login first.');
         setPayIsLoading(true);
         try {
             const stripe = await stripePromise;
