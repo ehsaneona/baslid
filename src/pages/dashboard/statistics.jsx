@@ -11,6 +11,8 @@ import { getAccountType } from '@/utils/getAccountType';
 import { getProductsStatisticsApi } from '@/services/core/productsStatistics';
 import { getProductsStatisticsTableFormat } from '@/utils/getProductsStatisticsTableFormat';
 import { toast } from 'react-toastify';
+import { useCopyToClipboard } from 'react-use';
+import { WEBSITE_URL } from '@/constants/appSettings';
 
 function StatisticsPage() {
     const productHeaders = [
@@ -24,6 +26,7 @@ function StatisticsPage() {
     const [productsStatisticsLoading, setProductsStatisticsLoading] =
         useState(true);
     const [productsStatistics, setProductsStatistics] = useState(null);
+    const [state, copyToClipboard] = useCopyToClipboard();
 
     useEffect(async () => {
         await getProductsStatistics();
@@ -93,13 +96,19 @@ function StatisticsPage() {
                                     <img
                                         height={125}
                                         width={125}
-                                        src={`https://api.qrserver.com/v1/create-qr-code/?size=125x125&data=${user.discountCode}`}
+                                        src={`https://api.qrserver.com/v1/create-qr-code/?size=125x125&data=${WEBSITE_URL}/?code=${user.discountCode}`}
                                         alt={user.discountCode}
                                     />
                                 </div>
-                                <button className="bg-yellow-200 rounded-md py-2 px-3 flex items-center mx-auto mt-4 text-sm font-semibold">
+                                <button
+                                    className="bg-yellow-200 rounded-md py-2 px-3 flex items-center mx-auto mt-4 text-sm font-semibold"
+                                    onClick={() =>
+                                        copyToClipboard(
+                                            `${WEBSITE_URL}/?code=${user.discountCode}`
+                                        )
+                                    }>
                                     <CopyIcon className="mr-2" />
-                                    Copy your link
+                                    {state.value ? 'Copied' : 'Copy your link'}
                                 </button>
                             </div>
                         </div>

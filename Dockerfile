@@ -6,10 +6,9 @@ ARG NODE_OPTIONS
 ARG NEXT_PUBLIC_API_URL
 ARG NEXT_PUBLIC_WEBSITE_URL
 
-
 COPY package.json ./
 COPY . ./
-RUN npm i
-RUN npm run build
+RUN yarn
+RUN yarn build
 
 CMD yarn start
