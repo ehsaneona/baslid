@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { cx } from 'class-variance-authority';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import BasketIcon from '@/components/icons/basketIcon';
 import {
@@ -253,6 +253,7 @@ const Header = () => {
                                         type="text"
                                         placeholder="Enter Code"
                                         className="w-full placeholder:text-gray-900 outline-none text-black-900"
+                                        defaultValue={router.query.code ?? ''}
                                         {...payRegister('code', {
                                             required: false,
                                         })}
